@@ -16,6 +16,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class Product {
     public Product(String userName, String password, String note, boolean rememberMe, Integer radio, boolean switchForm, String selectOption) {

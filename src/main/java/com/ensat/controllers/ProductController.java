@@ -29,18 +29,21 @@ public class ProductController {
         return productService.listAllProducts();
     }
 
+    @GetMapping("/getProduct")
+    Optional<Product> getProduct(@RequestParam String id) {
+        return productService.getProductById(Integer.valueOf(id));
+    }
+
     @PostMapping("/saveProduct")
     ResponseEntity<?> saveProduct(@RequestBody Product product) {
         productService.saveProduct(product);
         return ResponseEntity.ok(product);
     }
 
-    @PutMapping("/updateProduct")
-    public ResponseEntity<?> updateProduct(@RequestParam String userName,
-                                           @RequestParam String password,
-                                           @RequestParam String note, @RequestParam boolean rememberMe, @RequestParam Integer radio, @RequestParam boolean switchFrom, @RequestParam String selectOption) {
-        productService.saveProduct(new Product(userName, password, note, rememberMe, radio, switchFrom, selectOption));
-        return ResponseEntity.ok(new Product(userName, password, note, rememberMe, radio, switchFrom, selectOption));
+    @PostMapping("/updateProduct")
+    public ResponseEntity<?> updateProduct(@RequestBody Product product) {
+        productService.saveProduct(product);
+        return ResponseEntity.ok(product);
     }
 
     @DeleteMapping("/deleteProduct")

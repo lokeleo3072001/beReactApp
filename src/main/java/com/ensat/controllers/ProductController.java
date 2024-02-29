@@ -1,13 +1,12 @@
 package com.ensat.controllers;
 
+import com.ensat.DTO.ProductDTO;
 import com.ensat.entities.Product;
 import com.ensat.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,13 +24,13 @@ public class ProductController {
     }
 
     @GetMapping("/getAllProduct")
-    Iterable<Product> list() {
-        return productService.listAllProducts();
+    ResponseEntity<?> list() {
+        return ResponseEntity.ok(productService.listAllProducts());
     }
 
     @GetMapping("/getProduct")
-    Optional<Product> getProduct(@RequestParam String id) {
-        return productService.getProductById(Integer.valueOf(id));
+    public ResponseEntity<?> getProduct(@RequestParam String id) {
+        return ResponseEntity.ok(productService.getProductById(Integer.valueOf(id)));
     }
 
     @PostMapping("/saveProduct")

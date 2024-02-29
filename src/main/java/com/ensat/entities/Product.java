@@ -1,5 +1,6 @@
 package com.ensat.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,21 +20,13 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
-    public Product(String userName, String password, String note, boolean rememberMe, Integer radio, boolean switchForm, String selectOption) {
-        this.userName = userName;
-        this.password = password;
-        this.note = note;
-        this.rememberMe = rememberMe;
-        this.radio = radio;
-        this.switchForm = switchForm;
-        this.selectOption = selectOption;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String userName;
+
+    @JsonIgnore
     private String password;
     private String note;
     private boolean rememberMe;
